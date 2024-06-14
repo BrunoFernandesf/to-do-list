@@ -15,6 +15,13 @@ public class Tarefa {
     private boolean realizado;
     private int prioridade;
 
+    public Tarefa(String nome, String descricao, boolean realizado, int prioridade) {
+        this.nome = nome;
+        this.descricao = descricao;
+        this.realizado = realizado;
+        this.prioridade = prioridade;
+    }
+
     public Long getIdTarefas(){
         return idTarefas;
     }
@@ -22,10 +29,10 @@ public class Tarefa {
         this.idTarefas = idTarefas;
     }
 
-    private String getNome(){
+    public String getNome(){
         return nome;
     }
-    private void setNome(String nome){
+    public void setNome(String nome){
         this.nome = nome;
     }
 
