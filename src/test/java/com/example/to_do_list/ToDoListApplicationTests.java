@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
-@SpringBootTest
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class ToDoListApplicationTests {
 	@Autowired
 	private WebTestClient webTestClient;
@@ -34,6 +34,13 @@ class ToDoListApplicationTests {
 
 	@Test
 	void testCreateTarefaFailure() {
+		webTestClient
+				.post()
+				.uri("tarefas")
+				.bodyValue(
+						new Tarefa("", "",false, 0))
+				.exchange()
+				.expectStatus().isBadRequest();
 	}
 
 }
